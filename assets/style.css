@@ -424,7 +424,7 @@ picture{display:block}
  .cta{padding:26px 20px}
  .btn{white-space:normal;text-align:center;line-height:1.25;padding:12px 20px}
 }
-.stat{min-width:0;overflow-wrap:anywhere}
+.stat{min-width:0}
 @media (max-width:560px){.cta-grid{grid-template-columns:minmax(0,1fr)}.cta h2{font-size:min(10vw,44px);overflow-wrap:break-word}}
 @media (max-width:400px){h2{font-size:min(36px,10vw)}h1,h2,h3{overflow-wrap:break-word}}
 @media (max-width:560px){.btn{font-size:14px;letter-spacing:.03em;padding:12px 16px;gap:8px}}
@@ -435,3 +435,5 @@ body.menu-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 .mnav{height:100dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-top:calc(96px + env(safe-area-inset-top));padding-bottom:calc(40px + env(safe-area-inset-bottom))}
 .mnav>*{flex-shrink:0}
 .menu-open .hdr{background:var(--bg);border-color:var(--line);backdrop-filter:none;-webkit-backdrop-filter:none}
+.stat a.ext{margin-top:6px;font-size:14px;color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){.stats.contact{grid-template-columns:1fr}.stats.contact .stat{border-right:0;border-bottom:1px solid var(--line)}.stats.contact .stat:last-child{border-bottom:0}}

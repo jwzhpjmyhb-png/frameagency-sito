@@ -437,3 +437,9 @@ body.menu-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 .menu-open .hdr{background:var(--bg);border-color:var(--line);backdrop-filter:none;-webkit-backdrop-filter:none}
 .stat a.ext{margin-top:6px;font-size:14px;color:var(--lime);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:560px){.stats.contact{grid-template-columns:1fr}.stats.contact .stat{border-right:0;border-bottom:1px solid var(--line)}.stats.contact .stat:last-child{border-bottom:0}}
+/* voto Google (link alla scheda) */
+.gstar{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:18px;color:var(--muted);font-size:14px;text-decoration:none}
+.gstar .st{color:var(--lime);letter-spacing:2px;font-size:15px}
+.gstar b{color:var(--text,#f2f2ee);font-weight:600}
+.gstar:hover{color:var(--text,#f2f2ee)}.gstar:hover b{text-decoration:underline}
+.cta .gstar{margin-top:26px}

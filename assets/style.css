@@ -389,3 +389,14 @@ fieldset.f{border:0;padding:0;margin:0;min-width:0}
 .art-cta p{margin:10px 0 0}.art-cta .btns{margin-top:20px}
 @media (max-width:1020px){.posts{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.posts{grid-template-columns:1fr}.art{font-size:17px}}
+picture{display:block}
+/* barra contatti fissa su telefono */
+.mbar{display:none}
+@media (max-width:760px){
+ .mbar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(7,7,7,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);transition:transform .35s var(--ease)}
+ .mbar .btn{width:100%;justify-content:center;padding:14px 10px;font-size:14px}
+ .mbar .btn svg{width:18px;height:18px}
+ .mbar.off,.menu-open .mbar{transform:translateY(110%)}
+ .wa-fab{display:none}
+ body{padding-bottom:76px}
+}

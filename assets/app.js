@@ -145,3 +145,12 @@
 
   var y = d.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
 })();
+/* barra contatti su telefono: porta al modulo della pagina e si nasconde quando il modulo è visibile */
+(function () {
+  var bar = document.querySelector('.mbar'); if (!bar) return;
+  var form = document.getElementById('richiesta'), link = bar.querySelector('[data-mbar]');
+  if (form && link) link.setAttribute('href', '#richiesta');
+  if (form && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { es.forEach(function (e) { bar.classList.toggle('off', e.isIntersecting); }); }, { threshold: .08 }).observe(form);
+  }
+})();

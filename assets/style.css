@@ -379,7 +379,7 @@ fieldset.f{border:0;padding:0;margin:0;min-width:0}
 .art h2{font:600 clamp(26px,3vw,34px)/1.15 var(--display);margin:46px 0 14px;text-transform:none}
 .art h2:first-child{margin-top:0}
 .art p,.art li{color:#d8d8d2}
-.art a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+.art a:not(.btn){color:var(--lime);text-decoration:underline;text-underline-offset:3px}
 .art ul,.art ol{padding-left:22px}.art li{margin:8px 0}
 .art strong{color:var(--text)}
 .art table{width:100%;border-collapse:collapse;margin:22px 0;font-size:16px;display:block;overflow-x:auto}

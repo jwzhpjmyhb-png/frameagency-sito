@@ -314,7 +314,7 @@ fieldset.f{border:0;padding:0;margin:0;min-width:0}
 
 /* footer */
 .ftr{border-top:1px solid var(--line);padding:80px 0 100px;margin-top:40px}
-.ftr .big{font:600 clamp(54px,13vw,210px)/.85 var(--display);text-transform:uppercase;letter-spacing:-.02em;margin-bottom:60px;color:transparent;-webkit-text-stroke:1px var(--line2)}
+.ftr .big{font:600 clamp(30px,12.5vw,210px)/.85 var(--display);text-transform:uppercase;letter-spacing:-.02em;margin-bottom:60px;color:transparent;-webkit-text-stroke:1px var(--line2)}
 .ftr .big b{color:var(--lime);-webkit-text-stroke:0;font-weight:600}
 .fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px}
 .fgrid h2{font:500 13px/1 var(--sans);letter-spacing:.14em;color:var(--dim);margin-bottom:18px}
@@ -415,3 +415,23 @@ picture{display:block}
 }
 .price .amount small{white-space:nowrap}
 @media (min-width:1181px){.price{padding:28px 22px}.price .amount small{font-size:13px;margin:0 3px}}
+/* modulo: niente contenuti spinti a destra sui telefoni stretti (iPhone 15 Pro, 393px) */
+.form{grid-template-columns:repeat(2,minmax(0,1fr))}
+.form fieldset{min-width:0}
+.form>*{min-width:0}
+@media (max-width:560px){
+ .form{grid-template-columns:minmax(0,1fr)}
+ .cta{padding:26px 20px}
+ .btn{white-space:normal;text-align:center;line-height:1.25;padding:12px 20px}
+}
+.stat{min-width:0;overflow-wrap:anywhere}
+@media (max-width:560px){.cta-grid{grid-template-columns:minmax(0,1fr)}.cta h2{font-size:min(10vw,44px);overflow-wrap:break-word}}
+@media (max-width:400px){h2{font-size:min(36px,10vw)}h1,h2,h3{overflow-wrap:break-word}}
+@media (max-width:560px){.btn{font-size:14px;letter-spacing:.03em;padding:12px 16px;gap:8px}}
+@media (max-width:560px){.mbar .btn{white-space:nowrap;font-size:13px;letter-spacing:.02em;padding:0 10px;min-height:50px}}
+@media (max-width:350px){.mbar .btn{font-size:12px;letter-spacing:0}.mbar .btn svg{display:none}}
+/* menu telefono: scorre solo il menu, la pagina sotto è bloccata, titoli mai sotto il logo */
+body.menu-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+.mnav{height:100dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-top:calc(96px + env(safe-area-inset-top));padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+.mnav>*{flex-shrink:0}
+.menu-open .hdr{background:var(--bg);border-color:var(--line);backdrop-filter:none;-webkit-backdrop-filter:none}

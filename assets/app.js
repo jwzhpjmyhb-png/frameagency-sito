@@ -9,18 +9,29 @@
   function onScroll() { if (hdr) hdr.classList.toggle('on', window.scrollY > 20); }
   onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
-  // menu mobile
-  var burger = d.querySelector('.burger');
-  if (burger) burger.addEventListener('click', function () {
-    var open = d.body.classList.toggle('menu-open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
+  // menu mobile: quando è aperto la pagina sotto resta ferma (anche su iPhone)
+  var burger = d.querySelector('.burger'), sy = 0;
+  function menu(open) {
+    if (open === d.body.classList.contains('menu-open')) return;
+    if (open) {
+      sy = window.scrollY;
+      d.body.style.top = -sy + 'px';
+      d.body.classList.add('menu-open', 'menu-lock');
+    } else {
+      d.body.classList.remove('menu-open', 'menu-lock');
+      d.body.style.top = '';
+      window.scrollTo({ top: sy, left: 0, behavior: 'instant' });
+    }
+    if (burger) burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  if (burger) burger.addEventListener('click', function () { menu(!d.body.classList.contains('menu-open')); });
   d.querySelectorAll('.mnav a').forEach(function (a) {
-    a.addEventListener('click', function () { d.body.classList.remove('menu-open'); if (burger) burger.setAttribute('aria-expanded', 'false'); });
+    a.addEventListener('click', function () { menu(false); });
   });
   d.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && d.body.classList.contains('menu-open')) { d.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); burger.focus(); }
+    if (e.key === 'Escape' && d.body.classList.contains('menu-open')) { menu(false); burger.focus(); }
   });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1180) menu(false); });
 
   // menu a tendina "Servizi" (tastiera e tocco)
   d.querySelectorAll('.dd > button').forEach(function (b) {

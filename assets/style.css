@@ -364,3 +364,28 @@ fieldset.f{border:0;padding:0;margin:0;min-width:0}
 .incl .small{margin:20px 0 0}
 .ftr li.zone{color:var(--dim);font-size:14px;line-height:1.7}
 @media (max-width:900px){.prices{grid-template-columns:1fr}.incl ul{grid-template-columns:1fr}}
+/* blog */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.post{position:relative;display:flex;flex-direction:column;gap:12px;padding:26px 26px 60px;border-radius:var(--r);background:var(--bg3);border:1px solid var(--line);transition:border-color .25s,transform .35s var(--ease)}
+.post:hover{border-color:rgba(198,255,0,.5);transform:translateY(-3px)}
+.post .cat{font:500 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+.post h3{margin:0;font:600 22px/1.15 var(--display);text-transform:none}
+.post p{margin:0;color:var(--muted);font-size:15px}
+.post .ar{position:absolute;right:22px;bottom:20px;width:20px;color:var(--lime)}
+.blog-cat{font:600 clamp(26px,3vw,36px)/1 var(--display);text-transform:uppercase;margin:0 0 22px}
+.byline{margin-top:18px;color:var(--dim);font-size:14px}.byline strong{color:var(--muted)}
+.art{max-width:760px;font-size:18px;line-height:1.7}
+.art h2{font:600 clamp(26px,3vw,34px)/1.15 var(--display);margin:46px 0 14px;text-transform:none}
+.art h2:first-child{margin-top:0}
+.art p,.art li{color:#d8d8d2}
+.art a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+.art ul,.art ol{padding-left:22px}.art li{margin:8px 0}
+.art strong{color:var(--text)}
+.art table{width:100%;border-collapse:collapse;margin:22px 0;font-size:16px;display:block;overflow-x:auto}
+.art th,.art td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.art th{color:var(--lime);font:500 13px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.art-cta{margin-top:50px;padding:30px;border-radius:var(--r);background:rgba(198,255,0,.07);border:1px solid rgba(198,255,0,.35)}
+.art-cta b{display:block;font:600 24px/1.15 var(--display);text-transform:uppercase;color:var(--lime)}
+.art-cta p{margin:10px 0 0}.art-cta .btns{margin-top:20px}
+@media (max-width:1020px){.posts{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.posts{grid-template-columns:1fr}.art{font-size:17px}}

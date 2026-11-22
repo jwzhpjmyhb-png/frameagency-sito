@@ -100,7 +100,7 @@
   // modulo preventivo → email (Web3Forms); senza chiave o in caso di errore → WhatsApp precompilato
   var WA = '393534244304', MAIL = 'info@frameagency.it';
   d.querySelectorAll('form[data-lead]').forEach(function (f) {
-    var err = f.querySelector('.err'), ok = f.querySelector('.ok'), btn = f.querySelector('button[type="submit"]'), key = f.getAttribute('data-key');
+    var err = f.querySelector('.err'), ok = f.querySelector('.ok'), btn = f.querySelector('button[type="submit"]'), key = f.getAttribute('data-key'), AN = f.hasAttribute('data-analisi');
     function val(n) { var el = f.elements[n]; return el ? el.value.trim() : ''; }
     function servizi() { return [].slice.call(f.querySelectorAll('input[name="servizi"]:checked')).map(function (c) { return c.value; }); }
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -108,13 +108,16 @@
     function segna(el, good) { el.setAttribute('aria-invalid', good ? 'false' : 'true'); }
     function check() {
       var n = f.elements.nome, c = f.elements.contatto, okN = !!val('nome'), okC = !!tipo();
+      if (AN) { var ig = f.elements.instagram, okI = val('instagram').replace(/[@\s]/g, '').length >= 2; segna(ig, okI);
+        if (!okI) { segna(n, okN); segna(c, okC); err.textContent = 'Scrivi il tuo profilo Instagram.'; ig.focus(); return false; } }
       segna(n, okN); segna(c, okC);
       if (!okN || !okC) { err.textContent = !okN ? 'Scrivi il tuo nome.' : 'Scrivi un numero WhatsApp o un\'email valida.'; (!okN ? n : c).focus(); return false; }
       err.textContent = ''; return true;
     }
-    ['nome', 'contatto'].forEach(function (n) { var el = f.elements[n]; if (el) el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') { segna(el, n === 'nome' ? !!val('nome') : !!tipo()); if (el.getAttribute('aria-invalid') === 'false') err.textContent = ''; } }); });
+    ['nome', 'contatto', 'instagram'].forEach(function (n) { var el = f.elements[n]; if (el) el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') { segna(el, n === 'contatto' ? !!tipo() : n === 'instagram' ? val(n).replace(/[@\s]/g, '').length >= 2 : !!val(n)); if (el.getAttribute('aria-invalid') === 'false') err.textContent = ''; } }); });
     function testo() {
-      var sv = servizi(), r = ['Ciao FRAME Agency! Vorrei un preventivo gratuito.', '', 'Nome: ' + val('nome'), 'Contatto: ' + val('contatto')];
+      var sv = servizi(), r = [AN ? 'Ciao FRAME Agency! Vorrei l\'analisi gratuita del mio profilo.' : 'Ciao FRAME Agency! Vorrei un preventivo gratuito.', '', 'Nome: ' + val('nome'), 'Contatto: ' + val('contatto')];
+      if (AN) r.push('Profilo: ' + val('instagram'));
       if (sv.length) r.push('Mi serve: ' + sv.join(', '));
       if (val('messaggio')) r.push('Progetto: ' + val('messaggio'));
       return r.join('\n');
@@ -136,10 +139,10 @@
       btn.disabled = true; btn.classList.add('wait');
       var t = tipo(), dati = {
         access_key: key,
-        subject: 'Nuova richiesta preventivo dal sito — ' + val('nome'),
+        subject: (AN ? 'Nuova richiesta ANALISI INSTAGRAM dal sito — ' : 'Nuova richiesta preventivo dal sito — ') + val('nome'),
         from_name: 'Sito frameagency.it',
         Nome: val('nome'), Contatto: val('contatto') + (t === 'tel' ? ' (WhatsApp: https://wa.me/' + (function (n) { return n.length === 10 ? '39' + n : n; })(val('contatto').replace(/\D/g, '').replace(/^00/, '')) + ')' : ''),
-        Servizi: servizi().join(', ') || '—', Progetto: val('messaggio') || '—',
+        Servizi: AN ? 'Analisi Instagram gratuita' : (servizi().join(', ') || '—'), Progetto: val('messaggio') || '—', Instagram: val('instagram') || '—',
         Pagina: location.pathname
       };
       if (t === 'email') { dati.email = val('contatto'); dati.replyto = val('contatto'); }

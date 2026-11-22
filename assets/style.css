@@ -137,7 +137,7 @@ p{margin:0 0 1em}
 .alt{background:var(--bg2);border-block:1px solid var(--line)}
 
 /* servizi */
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .svc a{position:relative;display:flex;flex-direction:column;min-height:300px;padding:26px;border-radius:var(--r);background:var(--bg3);border:1px solid var(--line);overflow:hidden;transition:transform .45s var(--ease),border-color .3s}
 .svc a::before{content:"";position:absolute;inset:0;background:var(--lime);transform:translateY(101%);transition:transform .5s var(--ease);z-index:0}
 .svc a>*{position:relative;z-index:1;transition:color .3s}
@@ -344,12 +344,12 @@ fieldset.f{border:0;padding:0;margin:0;min-width:0}
 @media (max-width:560px){.cta .after{display:none}}
 .crumbs a,a.ext{display:inline-block;padding:10px 0}
 /* prezzi */
-.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.prices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .price{position:relative;display:flex;flex-direction:column;gap:6px;padding:30px 26px;border-radius:var(--r);background:var(--bg3);border:1px solid var(--line)}
 .price.top{border-color:rgba(198,255,0,.55);background:linear-gradient(180deg,rgba(198,255,0,.08),var(--bg3) 60%)}
 .price h3{margin:0;font:600 26px/1.1 var(--display);text-transform:uppercase}
 .price .vid{margin:0;color:var(--muted)}.price .vid b{color:var(--text)}
-.price .amount{margin:18px 0 0;font:600 clamp(38px,4vw,52px)/1 var(--display);color:var(--lime);letter-spacing:-.02em}
+.price .amount{margin:18px 0 0;font:600 clamp(36px,3.2vw,48px)/1 var(--display);color:var(--lime);letter-spacing:-.02em}
 .price .amount small{font:500 14px/1 var(--sans);color:var(--muted);letter-spacing:0;margin:0 4px}
 .price .amount small:first-child{margin-left:0}
 .price .per{margin:4px 0 10px;font-size:14px;color:var(--dim)}
@@ -363,6 +363,7 @@ fieldset.f{border:0;padding:0;margin:0;min-width:0}
 .incl li::before{content:"✓";position:absolute;left:0;color:var(--lime);font-weight:600}
 .incl .small{margin:20px 0 0}
 .ftr li.zone{color:var(--dim);font-size:14px;line-height:1.7}
+@media (max-width:1180px){.prices{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.prices{grid-template-columns:1fr}.incl ul{grid-template-columns:1fr}}
 /* blog */
 .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -400,3 +401,17 @@ picture{display:block}
  .wa-fab{display:none}
  body{padding-bottom:76px}
 }
+/* telefono: pulsanti tutti uguali e centrati, schede servizi più compatte */
+@media (max-width:560px){
+ .btns{flex-direction:column;align-items:stretch}
+ main .btn,.ftr .btn,.mnav .btn{width:100%;padding:0 20px}
+ .svc a{min-height:0}.svc h3{margin:64px 0 10px}
+ .sec-head,.cta,.incl,.price{text-align:left}
+}
+@media (max-width:560px){
+ .proofs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ .proofs li+li::before{content:none}
+ .proofs a{display:block;padding:12px 8px;text-align:center;border:1px solid var(--line);border-radius:12px;font-size:13px}
+}
+.price .amount small{white-space:nowrap}
+@media (min-width:1181px){.price{padding:28px 22px}.price .amount small{font-size:13px;margin:0 3px}}

@@ -173,7 +173,7 @@ p{margin:0 0 1em}
 
 /* manifesto */
 .manifesto{font:600 clamp(30px,4.6vw,66px)/1.05 var(--display);text-transform:uppercase;max-width:1100px}
-.manifesto .w{opacity:.16;transition:opacity .4s}
+.manifesto .w{opacity:.42;transition:opacity .4s}
 .manifesto .w.on{opacity:1}
 .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
 .pill-row span{border:1px solid var(--line2);border-radius:999px;padding:10px 16px;font-size:14px;color:var(--muted)}

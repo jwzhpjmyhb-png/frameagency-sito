@@ -1,4 +1,21 @@
 /* FRAME Agency — comportamento del sito (nessun cookie, nessun tracciamento) */
+/* Eventi di conversione PRONTI ma spenti: frameTrack() li passa allo strumento di statistiche SOLO se installato
+   (Plausible, Umami o GA4 via gtag). Oggi nessuno strumento è installato → non succede nulla. */
+window.frameTrack = function (nome, dati) {
+  try {
+    dati = dati || {}; dati.pagina = location.pathname;
+    if (window.plausible) window.plausible(nome, { props: dati });
+    else if (window.umami && window.umami.track) window.umami.track(nome, dati);
+    else if (window.gtag) window.gtag('event', nome, dati);
+  } catch (e) {}
+};
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
+  var h = a.getAttribute('href') || '';
+  if (h.indexOf('wa.me/') > -1) window.frameTrack('click_whatsapp');
+  else if (h.indexOf('tel:') === 0) window.frameTrack('click_telefono');
+  else if (h.indexOf('mailto:') === 0) window.frameTrack('click_email');
+}, true);
 (function () {
   var d = document, root = d.documentElement;
   root.classList.remove('no-js');
@@ -152,6 +169,7 @@
           if (!res.ok) return fallito();
           [].slice.call(f.children).forEach(function (c) { if (c !== ok) c.hidden = true; });
           ok.hidden = false; ok.focus && ok.setAttribute('tabindex', '-1'); ok.focus();
+          window.frameTrack(AN ? 'invio_analisi' : 'invio_preventivo');
         })
         .catch(fallito);
     });

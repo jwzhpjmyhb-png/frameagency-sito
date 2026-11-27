@@ -443,3 +443,10 @@ body.menu-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 .gstar b{color:var(--text,#f2f2ee);font-weight:600}
 .gstar:hover{color:var(--text,#f2f2ee)}.gstar:hover b{text-decoration:underline}
 .cta .gstar{margin-top:26px}
+/* siti realizzati (portfolio) */
+.works{display:grid;gap:22px}
+.work{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:34px;align-items:center;padding:26px;border-radius:var(--r);border:1px solid var(--line);background:var(--bg3)}
+.work .shot{display:block;border-radius:var(--r-s);overflow:hidden;border:1px solid var(--line);aspect-ratio:750/1460;background:#0b0b0b}
+.work .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.work ul{margin:16px 0 0;padding-left:18px;color:var(--dim)}.work li{margin:6px 0}
+@media (max-width:760px){.work{grid-template-columns:1fr;gap:22px;padding:18px}.work .shot{max-width:260px}}

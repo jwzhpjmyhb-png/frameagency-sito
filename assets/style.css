@@ -1,8 +1,8 @@
 /* FRAME Agency — stile del sito (nessuna libreria esterna, caratteri ospitati qui) */
-@font-face{font-family:"Clash Display";src:url(fonts/ClashDisplay-Semibold.ttf) format("truetype");font-weight:600;font-display:swap}
-@font-face{font-family:"Clash Display";src:url(fonts/ClashDisplay-Medium.ttf) format("truetype");font-weight:500;font-display:swap}
-@font-face{font-family:"General Sans";src:url(fonts/GeneralSans-Regular.ttf) format("truetype");font-weight:400;font-display:swap}
-@font-face{font-family:"General Sans";src:url(fonts/GeneralSans-Medium.ttf) format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Clash Display";src:url(fonts/ClashDisplay-Semibold.woff2) format("woff2"),url(fonts/ClashDisplay-Semibold.ttf) format("truetype");font-weight:600;font-display:swap}
+@font-face{font-family:"Clash Display";src:url(fonts/ClashDisplay-Medium.woff2) format("woff2"),url(fonts/ClashDisplay-Medium.ttf) format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"General Sans";src:url(fonts/GeneralSans-Regular.woff2) format("woff2"),url(fonts/GeneralSans-Regular.ttf) format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"General Sans";src:url(fonts/GeneralSans-Medium.woff2) format("woff2"),url(fonts/GeneralSans-Medium.ttf) format("truetype");font-weight:500;font-display:swap}
 
 :root{
   --bg:#070707;--bg2:#0e0e0e;--bg3:#151515;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);

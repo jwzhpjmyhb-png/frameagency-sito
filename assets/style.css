@@ -382,6 +382,7 @@ fieldset.f{border:0;padding:0;margin:0;min-width:0}
 .art a:not(.btn){color:var(--lime);text-decoration:underline;text-underline-offset:3px}
 .art ul,.art ol{padding-left:22px}.art li{margin:8px 0}
 .art strong{color:var(--text)}
+.art-fig{margin:0 0 34px;max-width:340px}.art-fig img{display:block;width:100%;height:auto;border-radius:16px}.art-fig figcaption{font-size:14px;color:var(--muted,#9a9a94);margin-top:10px;line-height:1.4}
 .art table{width:100%;border-collapse:collapse;margin:22px 0;font-size:16px;display:block;overflow-x:auto}
 .art th,.art td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
 .art th{color:var(--lime);font:500 13px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
